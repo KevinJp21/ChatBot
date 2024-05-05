@@ -1,0 +1,105 @@
+{
+    "intents": [
+        {
+            "tag": "saludo",
+            "patterns": ["hola", "qué tal", "cómo estás", "saludos"],
+            "responses": ["Hola! ¿Cómo puedo ayudarte?", "Buenas, ¿en qué te puedo ayudar?", "¿Cómo estás?"]
+        },
+        {
+            "tag": "saludo_mañana",
+            "patterns": ["buenos días", "buen día"],
+            "responses": ["¡Buenos días! ¿En qué puedo ayudarte hoy?", "¡Buen día! ¿Cómo puedo asistirte?"]
+        },
+        {
+            "tag": "saludo_tarde",
+            "patterns": ["buenas tardes", "buena tarde"],
+            "responses": ["¡Buenas tardes! ¿Cómo puedo ayudarte?", "¡Buena tarde! ¿En qué puedo asistirte hoy?"]
+        },
+        {
+            "tag": "saludo_noche",
+            "patterns": ["buenas noches", "buena noche"],
+            "responses": ["¡Buenas noches! ¿Te puedo ayudar en algo?", "¡Buena noche! ¿Hay algo con lo que te pueda asistir?"]
+        },
+        {
+            "tag": "nombre",
+            "patterns": ["cómo es tu nombre", "cómo te llamas"],
+            "responses": ["Me llamo DocMe", "Mi nombre es DocMe"]
+        },
+        {
+            "tag": "estado_animo_respuesta",
+            "patterns": ["bien", "mal", "más o menos", "no muy bien", "genial", "fatal", "enfermo", "grave", "congestionado"],
+            "responses": [
+                "Me alegra saber que estás bien. ¿En qué más puedo ayudarte?",
+                "Lamento escuchar eso. Espero que todo mejore. ¿Hay algo en lo que te pueda ayudar hoy?"
+            ]
+        },
+        {
+            "tag": "horarios",
+            "patterns": ["¿Cuáles son los horarios disponibles?", "Quiero saber los horarios", "¿Cuándo puedo agendar una cita?"],
+            "responses": ["Puedes agendar citas de Lunes a Viernes de 9:00 a 18:00 y los Sábados de 10:00 a 14:00.", "Nuestros horarios son de Lunes a Viernes de 9:00 a 18:00 y Sábados de 10:00 a 14:00."]
+        },
+        {
+            "tag": "reserva_cita",
+            "patterns": ["Necesito reservar una cita", "Quiero agendar una cita", "¿Cómo puedo hacer una reserva?"],
+            "responses": ["Para reservar una cita, comunicate a nuestra linea de atención 0180007636754.", "Comunicate a nuestra linea de atención 0180007636754 para recibir asesoramiento."]
+        },
+        {
+            "tag": "cancelar_cita",
+            "patterns": ["Necesito cancelar mi cita", "Quiero cancelar una reserva", "¿Cómo cancelo una cita?"],
+            "responses": ["Puedo ayudarte con eso. ¿Me puedes proporcionar el número de confirmación o tu nombre completo?", "Para cancelar tu cita, necesito el número de confirmación o tu nombre completo."]
+        },
+        {
+            "tag": "cambio_cita",
+            "patterns": ["Quiero cambiar mi cita", "Necesito reprogramar mi cita", "¿Cómo cambio la fecha de mi cita?"],
+            "responses": ["Puedo ayudarte a cambiarla. ¿Cuál es la nueva fecha y hora que deseas?", "Para cambiar tu cita, necesito saber la nueva fecha y hora que prefieres."]
+        },
+        {
+            "tag": "tipos_consulta",
+            "patterns": ["¿Qué tipos de consultas ofrecen?", "Necesito información sobre los tipos de servicios", "¿Cuáles son las especialidades que tienen?"],
+            "responses": ["Ofrecemos consultas generales, pediatría, dermatología, y más. ¿Te interesa alguna especialidad en particular?", "Contamos con diversas especialidades como medicina general, pediatría y dermatología."]
+        },
+        {
+            "tag": "confirmacion_cita",
+            "patterns": ["¿Cómo puedo confirmar mi cita?", "Necesito confirmar mi reserva", "¿Está confirmada mi cita?"],
+            "responses": ["Déjame verificar eso por ti. ¿Puedes darme tu nombre completo o el número de confirmación?", "Para confirmar tu cita, necesito el número de confirmación o tu nombre completo."]
+        },
+        {
+            "tag": "ayuda_general",
+            "patterns": ["Necesito ayuda", "No sé qué hacer", "Estoy confundido"],
+            "responses": ["Estoy aquí para ayudarte. Dime en qué puedo asistirte.", "Por supuesto, dime cómo puedo ayudarte específicamente."]
+        },
+        {
+            "tag": "agradecimiento",
+            "patterns": [
+                "gracias",
+                "ok",
+                "me sirve",
+                "buenísimo, gracias", 
+                "perfecto, gracias",
+                "resolviste mi duda",
+                "no es lo que buscaba",
+                "eso no ayuda",
+                "no me sirve",
+                "eso no resuelve mi problema",
+                "estoy confundido"
+            ],
+            "responses": [
+                "Estoy aquí para ayudarte. Dime en qué puedo asistirte.",
+                "Lamento que esto no haya sido lo que esperabas. Permíteme intentar de nuevo o darte otra solución. ¿Qué necesitas exactamente?",
+                "Claro, déjame explicarlo de otra manera. ¿Qué parte no fue clara?",
+                "Puedo proporcionar más detalles si me dices más sobre lo que estás buscando. ¿Cuál es la información específica que necesitas?",
+                "Parece que necesitamos ajustar nuestra respuesta. Dime más para que pueda ofrecerte la mejor solución posible."
+            ]
+        },
+        {
+            "tag": "no_entendido",
+            "patterns": ["No entiendo", "Qué dices", "Repite por favor", "No estoy seguro de lo que quieres decir"],
+            "responses": [
+                "Parece que no he entendido bien. ¿Podrías decirlo de otra manera?",
+                "No estoy seguro de haber comprendido. ¿Podrías reformular tu pregunta?",
+                "Me disculpo si hay alguna confusión. Intentemos de nuevo, ¿cuál es tu pregunta?"
+            ]
+        }
+
+    ]
+}
