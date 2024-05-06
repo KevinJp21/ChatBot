@@ -49,9 +49,12 @@ def bag_of_words(sentence):
             bag[words.index(w)] = 1
     return np.array(bag)
 
-def predict_class(sentence):
+def predict_class(sentence, threshold=0.383):  # Ajusta el umbral según sea necesario
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
+    # Verificar si el máximo valor supera el umbral
+    if np.max(res) < threshold:
+        return None  # Ninguna predicción es lo suficientemente confiable
     max_index = np.where(res == np.max(res))[0][0]
     category = classes[max_index]
     return category
@@ -76,6 +79,8 @@ def get_bot_response():
     user_data = request.json
     sentence = user_data.get('message')
     tag = predict_class(sentence)
+    if tag is None:
+        return jsonify({"response": "No te entendí lo que me dijiste, prueba otra vez."})
     response = get_response(tag, full_name)
     return jsonify({"response": response})
 

@@ -7,7 +7,7 @@
         },
         {
             "tag": " informacion_asistente",
-            "patterns": ["como es tu nombre", "como te llamas", "como te llamas?", "y tú, ¿como te llamas?", "si, como es que te llamas?"],
+            "patterns": ["como es tu nombre", "como te llamas", "me gustaria saber tu nombre", "como es que te llamas?"],
             "responses": ["Me llamo DocMe, soy tu asistente virtual aquí para ayudarte con las dudas que tengas.", "Soy DocMe, el asistente de chat diseñado para ayudarte con tus necesidades médicas.", "Como asistente de la aplicación DocMe, me llamo precisamente eso, DocMe. Estoy aquí para ayudarte con todo lo relacionado con tus citas médicas. ¿Hay algo más en que pueda asistirte?", "Mi nombre es DocMe, estoy aquí para facilitar la gestión de tus citas médicas."]
         },
         {
