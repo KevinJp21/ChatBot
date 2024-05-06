@@ -62,10 +62,10 @@ train_y = list(training[:,1])
 
 #Creamos la red neuronal
 model = Sequential()
-model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
-model.add(Dropout(0.5))
-model.add(Dense(64, activation='relu'))
-model.add(Dropout(0.5))
+model.add(Dense(256, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dropout(0.3))
+model.add(Dense(128, activation='relu'))
+model.add(Dropout(0.3))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
 #Creamos el optimizador y lo compilamos
@@ -73,6 +73,6 @@ sgd = SGD(learning_rate=0.001, decay=1e-6, momentum=0.9, nesterov=True)
 model.compile(loss='categorical_crossentropy', optimizer = sgd, metrics = ['accuracy'])
 
 #Entrenamos el modelo y lo guardamos
-train_process = model.fit(np.array(train_x), np.array(train_y), epochs=500, batch_size=10, verbose=2)
+train_process = model.fit(np.array(train_x), np.array(train_y), epochs=100, batch_size=10, verbose=2)
 model.save("DocMe.h5", train_process)
 
