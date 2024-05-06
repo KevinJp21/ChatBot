@@ -10,6 +10,7 @@ import nltk
 from nltk.stem import WordNetLemmatizer
 
 chatbot = Flask(__name__)
+CORS(chatbot)
 chatbot.config['SQLALCHEMY_DATABASE_URI'] = '***REMOVED***'
 chatbot.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -77,7 +78,7 @@ def get_bot_response():
     full_name = f"{user.Nombre} {user.Apellido}"
 
     user_data = request.json
-    sentence = user_data.get('message')
+    sentence = user_data.get('message').lower()
     tag = predict_class(sentence)
     if tag is None:
         return jsonify({"response": "No te entendí lo que me dijiste, prueba otra vez."})
