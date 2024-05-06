@@ -59,4 +59,5 @@ def get_bot_response():
 
 # Punto de entrada principal
 if __name__ == "__main__":
-    chatbot.run(debug=True)
+    from waitress import serve
+    serve(chatbot, host="0.0.0.0", port=8080)
