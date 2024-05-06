@@ -24,13 +24,13 @@ Este proyecto es un chatbot inteligente construido utilizando Flask, una librer�
 Para ejecutar este proyecto localmente, sigue estos pasos:
 
 1. **Clona el Repositorio:**
-   ```bash
-   git clone https://github.com/KevinJp21/ChatBot.git
-
+```bash
+git clone https://github.com/KevinJp21/ChatBot.git
+```
 2. Instala las Dependencias:
-   ```bash
-   pip install -r requirements.txt
-
+```bash
+pip install -r requirements.txt
+```
 3. Configura la Base de Datos:
 Asegúrate de configurar correctamente tus credenciales de MySQL en el archivo de configuración de Flask.
 
