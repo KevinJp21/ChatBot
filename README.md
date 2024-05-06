@@ -27,19 +27,19 @@ Para ejecutar este proyecto localmente, sigue estos pasos:
 ```bash
 git clone https://github.com/KevinJp21/ChatBot.git
 ```
-2. Instala las Dependencias:
+2. **Instala las Dependencias:**
 ```bash
 pip install -r requirements.txt
 ```
-3. Configura la Base de Datos:
+3. **Configura la Base de Datos:**
 Asegúrate de configurar correctamente tus credenciales de MySQL en el archivo de configuración de Flask.
 
-4. Entrena el Modelo:
+4. **Entrena el Modelo:**
 Si es necesario, reentrena el modelo de red neuronal utilizando el script proporcionado
  ```bash
 py training.py.
  ```
-5. Inicia el Servidor:
+5. **Inicia el Servidor:**
 ```bash
 py chatbot.py
 
