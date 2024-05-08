@@ -13,10 +13,7 @@ chatbot = Flask(__name__)
 CORS(chatbot)
 chatbot.config['SQLALCHEMY_DATABASE_URI'] = '***REMOVED***'
 chatbot.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db = SQLAlchemy(chatbot)
-
-#BD
 
 class User(db.Model):
     __tablename__ = 'usuarios'
@@ -24,19 +21,23 @@ class User(db.Model):
     Nombre = db.Column(db.String(255))
     Apellido = db.Column(db.String(255))
 
-# Carga los modelos y los archivos necesarios
+class Cita(db.Model):
+    __tablename__ = 'citas'
+    ID_Cita = db.Column(db.Integer, primary_key=True)
+    ID_Paciente= db.Column(db.Integer, db.ForeignKey('usuarios.ID_Usu'))
+    FechaCita = db.Column(db.DateTime)
+    Motivo = db.Column(db.String(255))
+    Estado = db.Column(db.String(50))
+    
 lemmatizer = WordNetLemmatizer()
-model = load_model('DocMe.h5') 
+model = load_model('DocMe.h5')
 with open('intents.json', 'r', encoding='utf-8') as file:
     intents = json.load(file)
-
 with open('words.pkl', 'rb') as file:
     words = pickle.load(file)
-
 with open('classes.pkl', 'rb') as file:
     classes = pickle.load(file)
 
-# Funciones auxiliares
 def clean_up_sentence(sentence):
     sentence_words = nltk.word_tokenize(sentence)
     sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
@@ -50,39 +51,60 @@ def bag_of_words(sentence):
             bag[words.index(w)] = 1
     return np.array(bag)
 
-def predict_class(sentence, threshold=0.383):  # Ajusta el umbral según sea necesario
+def predict_class(sentence, threshold=0.383):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
-    # Verificar si el máximo valor supera el umbral
     if np.max(res) < threshold:
-        return None  # Ninguna predicción es lo suficientemente confiable
+        return None
     max_index = np.where(res == np.max(res))[0][0]
     category = classes[max_index]
     return category
 
-def get_response(tag, user_name):
+def handle_greeting(user_id):
+    user = User.query.get(user_id)
+    if user:
+        full_name = f"{user.Nombre} {user.Apellido}"
+    else:
+        full_name = "Usuario"
     for intent in intents['intents']:
-        if intent['tag'] == tag:
-            # Elegir una respuesta al azar y formatearla con el nombre del usuario
+        if intent['tag'] == 'saludo':
             response = random.choice(intent['responses'])
-            return response.replace("{name}", user_name)
-        
+            return response.replace("{name}", full_name)
+    return "Hola, ¿en qué puedo ayudarte?"
 
-# Endpoint de la API
+def handle_last_appointment(user_id):
+    ultima_cita = Cita.query.filter_by(ID_Paciente=user_id).order_by(Cita.FechaCita.desc()).first()
+    if ultima_cita:
+        fecha_cita = ultima_cita.FechaCita.strftime('%Y-%m-%d')
+        for intent in intents['intents']:
+            if intent['tag'] == 'ultima_cita':
+                response = random.choice(intent['responses'])
+                return response.replace("{date}", fecha_cita)
+    else:
+        return "No tienes citas anteriores registradas."
+
+def get_response(tag, user_id):
+    handlers = {
+        'saludo': handle_greeting,
+        'ultima_cita': handle_last_appointment
+        # Puedes agregar más handlers aquí.
+    }
+    if tag in handlers:
+        return handlers[tag](user_id)
+    else:
+        return "Lo siento, no puedo ayudarte con eso."
+
 @chatbot.route('/message', methods=['POST'])
 def get_bot_response():
-    user = User.query.filter_by(ID_Usu=26).first()  # hardcoded for user ID 26
-    if user is None:
-        return jsonify({"response": "Usuario no encontrado para ID 26."})
-    
-    full_name = f"{user.Nombre} {user.Apellido}"
-
     user_data = request.json
     sentence = user_data.get('message').lower()
+    user_id = user_data.get('user_id', 26)  # Asumimos que user_id viene con el request, sino usamos un default
+
     tag = predict_class(sentence)
     if tag is None:
         return jsonify({"response": "No te entendí lo que me dijiste, prueba otra vez."})
-    response = get_response(tag, full_name)
+
+    response = get_response(tag, user_id)
     return jsonify({"response": response})
 
 if __name__ == "__main__":

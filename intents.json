@@ -12,10 +12,14 @@
         },
         {
             "tag": "estado_animo_mal",
-            "patterns": ["me siento mal", "no muy bien", "fatal", "enfermo", "grave"],
+            "patterns": ["me siento mal", "no muy bien", "fatal", "enfermo", "grave", "tengo una enfermedad"],
              "responses": [ "Lo siento escuchar eso. Puedo ayudarte a programar una cita con un médico para que te revise. ¿Te gustaría hacerlo ahora?",
-             "Lamento escuchar eso. Espero que todo mejore. ¿Hay algo en lo que te pueda ayudar hoy?", "Me preocupa escuchar eso. Es importante que un médico te evalúe. ¿Te ayudo a programar una cita?", "Vaya, eso no suena bien. Puedo guiarte para que puedas agendar una cita médica rápidamente. ¿Deseas proceder?"
-    ]
+             "Lamento escuchar eso. Espero que todo mejore. ¿Hay algo en lo que te pueda ayudar hoy?", "Me preocupa escuchar eso. Es importante que un médico te evalúe. ¿Te ayudo a programar una cita?", "Vaya, eso no suena bien. Puedo guiarte para que puedas agendar una cita médica rápidamente. ¿Deseas proceder?"]
+        },
+        {
+            "tag": "ultima_cita",
+            "patterns": ["cuando fue mi última cita", "quiero saber mi última cita", "cual fue mi última cita", "de cuando es la última cita mia"],
+            "responses": ["Tu última cita está programada para el {date}. ¿Hay algo más en que pueda asistirte?", "Déjame ver... tu última cita fue el {date}. ¿Necesitas algo más?"]
         }
     ]
 }
