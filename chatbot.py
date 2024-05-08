@@ -51,7 +51,7 @@ def bag_of_words(sentence):
             bag[words.index(w)] = 1
     return np.array(bag)
 
-def predict_class(sentence, threshold=0.383):
+def predict_class(sentence, threshold=0.2):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
     if np.max(res) < threshold:
@@ -72,6 +72,13 @@ def handle_greeting(user_id):
             return response.replace("{name}", full_name)
     return "Hola, ¿en qué puedo ayudarte?"
 
+def handle_assistInfo():
+    for intent in intents['intents']:
+        if intent['tag'] == 'informacion_asistente':
+            response = random.choice(intent['responses'])
+            return response
+    
+
 def handle_last_appointment(user_id):
     ultima_cita = Cita.query.filter_by(ID_Paciente=user_id).order_by(Cita.FechaCita.desc()).first()
     if ultima_cita:
@@ -86,11 +93,16 @@ def handle_last_appointment(user_id):
 def get_response(tag, user_id):
     handlers = {
         'saludo': handle_greeting,
-        'ultima_cita': handle_last_appointment
-        # Puedes agregar más handlers aquí.
+        'ultima_cita': handle_last_appointment,
+        'informacion_asistente': handle_assistInfo
     }
     if tag in handlers:
-        return handlers[tag](user_id)
+        handler = handlers[tag]
+        # Verificar si el handler necesita un argumento o no
+        if handler.__code__.co_argcount == 0:
+            return handler()  # Llamar sin argumentos
+        elif handler.__code__.co_argcount == 1:
+            return handler(user_id)  # Llamar con user_id como argumento
     else:
         return "Lo siento, no puedo ayudarte con eso."
 

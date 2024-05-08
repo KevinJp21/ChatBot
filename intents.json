@@ -6,7 +6,7 @@
             "responses": ["Hola {name}! ¿Cómo puedo ayudarte?", "Buenas {name}, ¿en qué te puedo ayudar?", "¡Hola {name}!, Buen día, ¿qué necesitas?", "¡Hola {name}! ¿Te puedo ayudar en algo?", "¡Que tal {name}!, ¿En qué puedo asistirte hoy?", "¡Hola {name}!, ¿Cómo puedo asistirte?", "¡Buenas {name}!, ¿hay algo en particular con lo que te pueda ayudar?"]
         },
         {
-            "tag": " informacion_asistente",
+            "tag": "informacion_asistente",
             "patterns": ["como es tu nombre", "como te llamas", "me gustaria saber tu nombre", "como es que te llamas?"],
             "responses": ["Me llamo DocMe, soy tu asistente virtual aquí para ayudarte con las dudas que tengas.", "Soy DocMe, el asistente de chat diseñado para ayudarte con tus necesidades médicas.", "Como asistente de la aplicación DocMe, me llamo precisamente eso, DocMe. Estoy aquí para ayudarte con todo lo relacionado con tus citas médicas. ¿Hay algo más en que pueda asistirte?", "Mi nombre es DocMe, estoy aquí para facilitar la gestión de tus citas médicas."]
         },
