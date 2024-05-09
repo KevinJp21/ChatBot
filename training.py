@@ -27,7 +27,7 @@ def preprocess_text(text):
     return words
 
 # Cargar los intents
-intents = json.loads(open('./intents.json').read())
+intents = json.loads(open('intents.json').read())
 
 words = []
 classes = []

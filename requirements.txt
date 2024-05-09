@@ -6,3 +6,4 @@ nltk==3.8.1
 keras==3.3.3
 tensorflow==2.16.1
 waitress==3.0.0
+pymysql==1.1.0

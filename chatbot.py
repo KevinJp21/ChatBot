@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
-from flask_cors import CORS
+from sqlalchemy.sql import text
 import json
 import random
 import pickle
@@ -8,27 +7,8 @@ import numpy as np
 from keras.models import load_model
 import nltk
 from nltk.stem import WordNetLemmatizer
+from DBConnection.config import db, chatbot
 
-chatbot = Flask(__name__)
-CORS(chatbot)
-chatbot.config['SQLALCHEMY_DATABASE_URI'] = '***REMOVED***'
-chatbot.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(chatbot)
-
-class User(db.Model):
-    __tablename__ = 'usuarios'
-    ID_Usu = db.Column(db.Integer, primary_key=True)
-    Nombre = db.Column(db.String(255))
-    Apellido = db.Column(db.String(255))
-
-class Cita(db.Model):
-    __tablename__ = 'citas'
-    ID_Cita = db.Column(db.Integer, primary_key=True)
-    ID_Paciente= db.Column(db.Integer, db.ForeignKey('usuarios.ID_Usu'))
-    FechaCita = db.Column(db.DateTime)
-    Motivo = db.Column(db.String(255))
-    Estado = db.Column(db.String(50))
-    
 lemmatizer = WordNetLemmatizer()
 model = load_model('DocMe.h5')
 with open('intents.json', 'r', encoding='utf-8') as file:
@@ -61,27 +41,25 @@ def predict_class(sentence, threshold=0.2):
     return category
 
 def handle_greeting(user_id):
-    user = User.query.get(user_id)
+    sql = text("SELECT Nombre, Apellido FROM usuarios WHERE ID_Usu = :user_id")
+    result = db.session.execute(sql, {'user_id': user_id})
+    user = result.fetchone()
     if user:
         full_name = f"{user.Nombre} {user.Apellido}"
     else:
-        full_name = "Usuario"
+        full_name = ""
     for intent in intents['intents']:
         if intent['tag'] == 'saludo':
             response = random.choice(intent['responses'])
             return response.replace("{name}", full_name)
     return "Hola, ¿en qué puedo ayudarte?"
 
-def handle_assistInfo():
-    for intent in intents['intents']:
-        if intent['tag'] == 'informacion_asistente':
-            response = random.choice(intent['responses'])
-            return response
-    
-
 def handle_last_appointment(user_id):
-    ultima_cita = Cita.query.filter_by(ID_Paciente=user_id).order_by(Cita.FechaCita.desc()).first()
+    sql = text("SELECT FechaCita FROM citas WHERE ID_Paciente = :user_id ORDER BY FechaCita DESC LIMIT 1")
+    result = db.session.execute(sql, {'user_id': user_id})
+    ultima_cita = result.fetchone()
     if ultima_cita:
+        # Aquí debes asegurarte que accedes a la fecha como parte de un RowProxy, que permite el acceso por nombre de columna.
         fecha_cita = ultima_cita.FechaCita.strftime('%Y-%m-%d')
         for intent in intents['intents']:
             if intent['tag'] == 'ultima_cita':
@@ -89,20 +67,26 @@ def handle_last_appointment(user_id):
                 return response.replace("{date}", fecha_cita)
     else:
         return "No tienes citas anteriores registradas."
+    
+def handle_infoAssist():
+    for intent in intents['intents']:
+        if intent['tag'] == 'informacion_asistente':
+            response = random.choice(intent['responses'])
+            return response
 
 def get_response(tag, user_id):
     handlers = {
         'saludo': handle_greeting,
         'ultima_cita': handle_last_appointment,
-        'informacion_asistente': handle_assistInfo
+        'informacion_asistente': handle_infoAssist
+
     }
     if tag in handlers:
         handler = handlers[tag]
-        # Verificar si el handler necesita un argumento o no
         if handler.__code__.co_argcount == 0:
-            return handler()  # Llamar sin argumentos
+            return handler()
         elif handler.__code__.co_argcount == 1:
-            return handler(user_id)  # Llamar con user_id como argumento
+            return handler(user_id)
     else:
         return "Lo siento, no puedo ayudarte con eso."
 
@@ -110,7 +94,7 @@ def get_response(tag, user_id):
 def get_bot_response():
     user_data = request.json
     sentence = user_data.get('message').lower()
-    user_id = user_data.get('user_id', 26)  # Asumimos que user_id viene con el request, sino usamos un default
+    user_id = user_data.get('user_id', 26)
 
     tag = predict_class(sentence)
     if tag is None:
