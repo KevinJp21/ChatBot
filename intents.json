@@ -2,29 +2,105 @@
     "intents": [
         {
             "tag": "saludo",
-            "patterns": ["hola", "¿que tal?", "buenos dias", "saludos", "buenas"],
-            "responses": ["Hola {name}! ¿Cómo puedo ayudarte?", "Buenas {name}, ¿en qué te puedo ayudar?", "¡Hola {name}!, Buen día, ¿qué necesitas?", "¡Hola {name}! ¿Te puedo ayudar en algo?", "¡Que tal {name}!, ¿En qué puedo asistirte hoy?", "¡Hola {name}!, ¿Cómo puedo asistirte?", "¡Buenas {name}!, ¿hay algo en particular con lo que te pueda ayudar?"]
+            "patterns": [
+                "hola",
+                "¿que tal?",
+                "buenos dias",
+                "saludos",
+                "buenas"
+            ],
+            "responses": [
+                "Hola {name}! ¿Cómo puedo ayudarte?",
+                "Buenas {name}, ¿en qué te puedo ayudar?",
+                "¡Hola {name}!, Buen día, ¿qué necesitas?",
+                "¡Hola {name}! ¿Te puedo ayudar en algo?",
+                "¡Que tal {name}!, ¿En qué puedo asistirte hoy?",
+                "¡Hola {name}!, ¿Cómo puedo asistirte?",
+                "¡Buenas {name}!, ¿hay algo en particular con lo que te pueda ayudar?"
+            ]
         },
         {
             "tag": "informacion_asistente",
-            "patterns": ["como es tu nombre", "como te llamas", "me gustaria saber tu nombre", "como es que te llamas?"],
-            "responses": ["Me llamo DocMe, soy tu asistente virtual aquí para ayudarte con las dudas que tengas.", "Soy DocMe, el asistente de chat diseñado para ayudarte con tus necesidades médicas.", "Como asistente de la aplicación DocMe, me llamo precisamente eso, DocMe. Estoy aquí para ayudarte con todo lo relacionado con tus citas médicas. ¿Hay algo más en que pueda asistirte?", "Mi nombre es DocMe, estoy aquí para facilitar la gestión de tus citas médicas."]
+            "patterns": [
+                "como es tu nombre",
+                "como te llamas",
+                "me gustaria saber tu nombre",
+                "como es que te llamas?"
+            ],
+            "responses": [
+                "Me llamo DocMe, soy tu asistente virtual aquí para ayudarte con las dudas que tengas.",
+                "Soy DocMe, el asistente de chat diseñado para ayudarte con tus necesidades médicas.",
+                "Como asistente de la aplicación DocMe, me llamo precisamente eso, DocMe. Estoy aquí para ayudarte con todo lo relacionado con tus citas médicas. ¿Hay algo más en que pueda asistirte?",
+                "Mi nombre es DocMe, estoy aquí para facilitar la gestión de tus citas médicas."
+            ]
         },
         {
             "tag": "estado_animo_mal",
-            "patterns": ["me siento mal", "no muy bien", "fatal", "enfermo", "grave", "tengo una enfermedad"],
-             "responses": [ "Lo siento escuchar eso. Puedo ayudarte a programar una cita con un médico para que te revise. ¿Te gustaría hacerlo ahora?",
-             "Lamento escuchar eso. Espero que todo mejore. ¿Hay algo en lo que te pueda ayudar hoy?", "Me preocupa escuchar eso. Es importante que un médico te evalúe. ¿Te ayudo a programar una cita?", "Vaya, eso no suena bien. Puedo guiarte para que puedas agendar una cita médica rápidamente. ¿Deseas proceder?"]
+            "patterns": [
+                "me siento mal",
+                "no muy bien",
+                "fatal",
+                "enfermo",
+                "grave",
+                "tengo una enfermedad"
+            ],
+            "responses": [
+                "Lo siento escuchar eso. Puedo ayudarte a programar una cita con un médico para que te revise. ¿Te gustaría hacerlo ahora?",
+                "Lamento escuchar eso. Espero que todo mejore. ¿Hay algo en lo que te pueda ayudar hoy?",
+                "Me preocupa escuchar eso. Es importante que un médico te evalúe. ¿Te ayudo a programar una cita?",
+                "Vaya, eso no suena bien. Puedo guiarte para que puedas agendar una cita médica rápidamente. ¿Deseas proceder?"
+            ]
         },
         {
             "tag": "proxima_cita",
-            "patterns": ["cuando es mi proxima cita", "quiero saber mi siguiente cita", "que dia es mi proxima cita"],
-            "responses": ["Tu proxima cita es {date} a las {time}. ¿Hay algo más en que pueda asistirte?", "Déjame ver... tu siguiente cita es el {date} a las {time}. ¿Necesitas algo más?"]
+            "patterns": [
+                "cuando es mi proxima cita",
+                "quiero saber mi siguiente cita",
+                "que dia es mi proxima cita"
+            ],
+            "responses": [
+                "Tu próxima cita es el {date} a las {time} con el médico {doctor} por el motivo de {reason}. ¿Hay algo más en que pueda asistirte?.",
+                "Déjame ver... tu siguiente cita es el {date} a las {time} con el médico {doctor}, debido a {reason}. ¿Necesitas algo más?.",
+                "Has reservado tu siguiente cita el {date} a las {time} con el médico {doctor} por motivo de {reason}. ¿Necesitas más información?.",
+                "La fecha de tu próxima cita es el {date} a las {time} con el médico {doctor}, y el motivo es {reason}. ¿Hay algo más en que pueda asistirte?.",
+                "Estoy viendo que tu siguiente cita es el {date} a las {time} con el médico {doctor}. El motivo de la cita es {reason}. ¿Puedo ayudarte con algo más?."
+            ]
         },
         {
             "tag": "ultima_cita",
-            "patterns": ["cuando fue mi última cita", "quiero saber mi última cita", "cual fue mi última cita", "de cuando es la última cita mia"],
-            "responses": ["Tu última cita fue el {date} a las {time}. ¿Hay algo más en que pueda asistirte?", "Déjame ver... tu última cita fue el {date} a las {time}. ¿Necesitas algo más?"]
-        }
+            "patterns": [
+                "cuando fue mi última cita",
+                "quiero saber mi última cita",
+                "cual fue mi última cita",
+                "de cuando es la última cita mia"
+            ],
+            "responses": [
+                "Tu última cita fue el {date} a las {time} con el médico {doctor} por el motivo de {reason}. ¿Hay algo más en que pueda asistirte?.",
+                "Déjame ver... tu última cita fue el {date} a las {time} con el médico {doctor}, debido a {reason}. ¿Necesitas algo más?.",
+                "Tu última cita se realizó el {date} a las {time} con el médico {doctor} para discutir {reason}. ¿Hay algo más con lo que necesites ayuda?.",
+                "Revisando tus registros, tu última cita ocurrió el {date} a las {time} con el médico {doctor}, y el motivo fue {reason}. ¿Puedo ayudarte con algo más?.",
+                "Acabo de comprobar que tu última cita tuvo lugar el {date} a las {time} con el médico {doctor}. El motivo de la cita fue {reason}. ¿Necesitas otro servicio o tienes alguna otra consulta?.",
+                "Tu última cita se realizó el {date} a las {time} con el médico {doctor} sobre {reason}. ¿Hay algo más con lo que necesites ayuda?."
+            ]
+        },
+        {
+            "tag": "agradecimiento",
+            "patterns": [
+              "gracias",
+              "muchas gracias",
+              "te lo agradezco",
+              "agradecido",
+              "eres muy amable",
+              "ok, gracias",
+              "bueno"
+            ],
+            "responses": [
+              "¡De nada! Siempre estoy aquí para ayudarte.",
+              "No hay de qué, ¡estoy aquí para asistirte en lo que necesites!",
+              "Es un placer ayudarte, ¿hay algo más en que pueda asistirte?",
+              "Siempre a tu servicio. No dudes en preguntar si necesitas más ayuda.",
+              "¡Fue un placer ayudarte! Si necesitas algo más, sólo tienes que decirlo."
+            ]
+          }
     ]
 }
