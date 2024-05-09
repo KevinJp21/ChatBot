@@ -17,9 +17,14 @@
              "Lamento escuchar eso. Espero que todo mejore. ¿Hay algo en lo que te pueda ayudar hoy?", "Me preocupa escuchar eso. Es importante que un médico te evalúe. ¿Te ayudo a programar una cita?", "Vaya, eso no suena bien. Puedo guiarte para que puedas agendar una cita médica rápidamente. ¿Deseas proceder?"]
         },
         {
+            "tag": "proxima_cita",
+            "patterns": ["cuando es mi proxima cita", "quiero saber mi siguiente cita", "que dia es mi proxima cita"],
+            "responses": ["Tu proxima cita es {date} a las {time}. ¿Hay algo más en que pueda asistirte?", "Déjame ver... tu siguiente cita es el {date} a las {time}. ¿Necesitas algo más?"]
+        },
+        {
             "tag": "ultima_cita",
             "patterns": ["cuando fue mi última cita", "quiero saber mi última cita", "cual fue mi última cita", "de cuando es la última cita mia"],
-            "responses": ["Tu última cita está programada para el {date}. ¿Hay algo más en que pueda asistirte?", "Déjame ver... tu última cita fue el {date}. ¿Necesitas algo más?"]
+            "responses": ["Tu última cita fue el {date} a las {time}. ¿Hay algo más en que pueda asistirte?", "Déjame ver... tu última cita fue el {date} a las {time}. ¿Necesitas algo más?"]
         }
     ]
 }
