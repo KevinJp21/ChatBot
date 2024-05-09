@@ -3,20 +3,28 @@ import pickle
 import numpy as np
 from keras.models import load_model
 import nltk
-from nltk.stem import WordNetLemmatizer
+from nltk.stem import SnowballStemmer 
+import unicodedata
 from DBConnection.config import chatbot
 import Handlers.handlers as hl
 
-lemmatizer = WordNetLemmatizer()
+stemmer = SnowballStemmer('spanish')
 model = load_model('DocMe.h5')
+
+# Cargar palabras y clases
 with open('words.pkl', 'rb') as file:
     words = pickle.load(file)
 with open('classes.pkl', 'rb') as file:
     classes = pickle.load(file)
 
+print('ñ' in words)
+
 def clean_up_sentence(sentence):
+    # Normalización y tokenización
+    sentence = unicodedata.normalize('NFC', sentence.lower())
     sentence_words = nltk.word_tokenize(sentence)
-    sentence_words = [lemmatizer.lemmatize(word) for word in sentence_words]
+    # Cambio a stemmer
+    sentence_words = [stemmer.stem(word) for word in sentence_words]
     return sentence_words
 
 def bag_of_words(sentence):
@@ -42,8 +50,8 @@ def get_response(tag, user_id):
         'ultima_cita': hl.handle_last_appointment,
         'informacion_asistente': hl.handle_infoAssist,
         'proxima_cita': hl.handle_next_appointment,
-        'agradecimiento': hl.handle_thankfull
-
+        'agradecimiento': hl.handle_thankfull,
+        'datos_privados': hl.handle_privateDatas
     }
     if tag in handlers:
         handler = handlers[tag]

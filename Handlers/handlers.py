@@ -3,7 +3,6 @@ from DBConnection.config import db
 import random
 import json
 
-# Asumiendo que `intents.json`, `words.pkl`, y `classes.pkl` también se utilizan aquí, si es necesario
 with open('intents.json', 'r', encoding='utf-8') as file:
     intents = json.load(file)
 
@@ -70,5 +69,11 @@ def handle_infoAssist():
 def handle_thankfull():
     for intent in intents['intents']:
         if intent['tag'] == 'agradecimiento':
+            response = random.choice(intent['responses'])
+            return response
+
+def handle_privateDatas():
+    for intent in intents['intents']:
+        if intent['tag'] == 'datos_privados':
             response = random.choice(intent['responses'])
             return response

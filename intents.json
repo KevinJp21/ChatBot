@@ -86,13 +86,14 @@
         {
             "tag": "agradecimiento",
             "patterns": [
-              "gracias",
+              "ok, gracias",
               "muchas gracias",
               "te lo agradezco",
-              "agradecido",
+              "estoy agradecido",
               "eres muy amable",
-              "ok, gracias",
-              "bueno"
+              "bueno, gracias",
+              "dale, gracias",
+              "vale, gracias"
             ],
             "responses": [
               "¡De nada! Siempre estoy aquí para ayudarte.",
@@ -100,6 +101,22 @@
               "Es un placer ayudarte, ¿hay algo más en que pueda asistirte?",
               "Siempre a tu servicio. No dudes en preguntar si necesitas más ayuda.",
               "¡Fue un placer ayudarte! Si necesitas algo más, sólo tienes que decirlo."
+            ]
+          },
+          {
+            "tag": "datos_privados",
+            "patterns": [
+              "Cual es mi correo",
+              "Necesito mi contraseña",
+              "Dime mi identificacion",
+              "¿Puedes darme mi numero de identificacion",
+              "Cual es mi numero de identificacion"
+            ],
+            "responses": [
+              "Por políticas de seguridad, no puedo proporcionar o confirmar datos sensibles de los usuarios a través de este medio.",
+              "Lamentablemente, no estoy autorizado a compartir o divulgar datos sensibles como contraseñas o información de identificación, correo, etc.",
+              "Debido a nuestras políticas de privacidad y seguridad, no puedo acceder ni compartir datos personales sensibles. Te recomiendo que accedas a tu cuenta de usuario para obtener esa información.",
+              "Por razones de seguridad, no puedo divulgar información sensible aquí. Por favor, utiliza los medios seguros en nuestro sitio web o app para esos datos."
             ]
           }
     ]
