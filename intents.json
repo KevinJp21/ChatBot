@@ -40,13 +40,12 @@
                 "¿Cómo te identificas?",
                 "¿Cuál es tu identidad?",
                 "¿Cuál es tu función aquí como asistente virtual?",
-                "¿Que haces?"
+                "¿Qué haces?"
             ],
             "responses": [
-                "Me llamo DocMe, soy tu asistente virtual aquí para ayudarte con las dudas que tengas sobre tus citas médicas y más.",
-                "Soy DocMe, el asistente de chat diseñado especialmente para ayudarte con tus necesidades médicas. ¿En qué más puedo asistirte hoy?",
-                "Como asistente de la aplicación DocMe, me llamo precisamente eso, DocMe. Estoy aquí para ayudarte a gestionar tus citas médicas, recetas y consultas médicas. ¿Cómo puedo ayudarte hoy?",
-                "Mi nombre es DocMe. Estoy aquí para facilitar la gestión de tus citas médicas y para asegurarme de que tu experiencia en el cuidado de la salud sea lo más fluida posible."
+                "Me llamo DocMe, soy tu asistente virtual aquí para ayudarte con cualquier duda que tengas, especialmente sobre tus citas médicas y más.",
+                "Soy DocMe, el asistente de chat diseñado para ayudarte en tus necesidades médicas. ¿Hay algo más en lo que puedo asistirte?",
+                "Mi nombre es DocMe. Facilito la gestión de tus citas médicas y me aseguro de que tu experiencia en el cuidado de la salud sea lo más fluida posible."
             ]
         },
         {
@@ -68,36 +67,27 @@
                 "he estado sintiéndome muy deprimido"
             ],
             "responses": [
-                "Lo siento escuchar eso. Puedo ayudarte a programar una cita con un médico para que te revise. ¿Te gustaría hacerlo ahora?",
-                "Lamento escuchar eso. Espero que todo mejore. ¿Hay algo en lo que te pueda ayudar hoy?",
-                "Me preocupa escuchar eso. Es importante que un médico te evalúe. ¿Te ayudo a programar una cita?",
-                "Vaya, eso no suena bien. Puedo guiarte para que puedas agendar una cita médica rápidamente. ¿Deseas proceder?",
-                "Es duro sentirse así. Estoy aquí para ayudarte a encontrar el apoyo que necesitas. ¿Quieres que te asista en programar una visita al especialista?",
-                "Entiendo que es un momento difícil. Si necesitas hablar con un profesional, puedo organizarlo de inmediato. ¿Cómo te gustaría proceder?"
+                "Lo siento mucho. Puedo ayudarte a programar una cita con un médico. ¿Te gustaría hacerlo ahora?",
+                "Lamento que te sientas así. Si necesitas hablar con un especialista o agendar una cita, estoy aquí para ayudarte. ¿Cómo deseas proceder?"
             ]
         },
         {
             "tag": "proxima_cita",
             "patterns": [
-                "cuando es mi proxima cita",
+                "cuando es mi próxima cita",
                 "quiero saber mi siguiente cita",
-                "que dia es mi proxima cita",
+                "qué día es mi próxima cita",
                 "necesito confirmar la fecha de mi próxima cita",
                 "cuándo tengo agendada mi próxima visita",
                 "podrías informarme sobre mi próxima cita médica",
-                "¿serías tan amable de decirme la fecha y la hora de mi cita que viene?",
+                "¿serías tan amable de decirme la fecha y la hora de mi próxima cita?",
                 "me podrías confirmar el día y la hora de mi siguiente visita médica",
                 "tengo curiosidad sobre cuándo está programada mi próxima cita",
                 "podrías verificar cuándo es mi próxima cita con el doctor",
                 "necesitaría saber cuándo es mi próxima visita programada"
             ],
             "responses": [
-                "Tu próxima cita es el {date} a las {time} con el médico {doctor} por el motivo de {reason}. ¿Hay algo más en que pueda asistirte?",
-                "Déjame verificar... tu siguiente cita es el {date} a las {time} con el médico {doctor}, debido a {reason}. ¿Necesitas algo más?",
-                "Has reservado tu siguiente cita para el {date} a las {time} con el médico {doctor} por motivo de {reason}. ¿Necesitas más información?",
-                "La fecha de tu próxima cita es el {date} a las {time} con el médico {doctor}, y el motivo es {reason}. ¿Hay algo más en que pueda asistirte?",
-                "Estoy viendo que tu siguiente cita es el {date} a las {time} con el médico {doctor}. El motivo de la cita es {reason}. ¿Puedo ayudarte con algo más?",
-                "Según lo que tengo registrado, tu próxima cita médica es el {date} a las {time} con {doctor} por {reason}. ¿Te gustaría saber algo más?"
+                "Tu próxima cita está programada para el {date} a las {time} con el médico {doctor}. El motivo de la cita es {reason}. ¿Te puedo ayudar en algo más?"
             ]
         },
         {
@@ -115,12 +105,7 @@
                 "dame la fecha de mi cita pasada"
             ],
             "responses": [
-                "Tu última cita fue el {date} a las {time} con el médico {doctor} por el motivo de {reason}. ¿Hay algo más en que pueda asistirte?",
-                "Déjame ver... tu última cita fue el {date} a las {time} con el médico {doctor}, debido a {reason}. ¿Necesitas algo más?",
-                "Tu última cita se realizó el {date} a las {time} con el médico {doctor} para discutir {reason}. ¿Hay algo más con lo que necesites ayuda?",
-                "Revisando tus registros, tu última cita ocurrió el {date} a las {time} con el médico {doctor}, y el motivo fue {reason}. ¿Puedo ayudarte con algo más?",
-                "Acabo de comprobar que tu última cita tuvo lugar el {date} a las {time} con el médico {doctor}. El motivo de la cita fue {reason}. ¿Necesitas otro servicio o tienes alguna otra consulta?",
-                "Tu última cita se realizó el {date} a las {time} con el médico {doctor} sobre {reason}. ¿Hay algo más con lo que necesites ayuda?"
+                "Tu última cita fue el {date} a las {time} con el médico {doctor}. El motivo fue {reason}. ¿Hay algo más en lo que pueda ayudarte?"
             ]
         },
         {
@@ -136,11 +121,9 @@
                 "vale, gracias"
             ],
             "responses": [
-                "¡De nada! Siempre estoy aquí para ayudarte.",
-                "No hay de qué, ¡estoy aquí para asistirte en lo que necesites!",
-                "Es un placer ayudarte, ¿hay algo más en que pueda asistirte?",
-                "Siempre a tu servicio. No dudes en preguntar si necesitas más ayuda.",
-                "¡Fue un placer ayudarte! Si necesitas algo más, sólo tienes que decirlo."
+                "¡De nada! Estoy aquí para ayudarte con cualquier cosa que necesites.",
+                "No hay de qué. Siempre estoy disponible para asistirte.",
+                "Es un placer ayudarte. No dudes en contactarme si necesitas más ayuda."
             ]
         },
         {
@@ -153,10 +136,10 @@
                 "¿Cuál es mi número de identificación?"
             ],
             "responses": [
-                "Por políticas de seguridad, no puedo proporcionar datos sensibles de los usuarios a través de este medio.",
-                "Lamentablemente, no estoy autorizado a compartir o divulgar datos sensibles como contraseñas o información de identificación. Te recomiendo que accedas a tu cuenta de usuario para obtener esa información.",
-                "Debido a nuestras políticas de privacidad y seguridad, no puedo acceder ni compartir datos personales sensibles.",
-                "Por razones de seguridad, no puedo divulgar información sensible aquí. Por favor, utiliza los medios seguros en nuestro sitio web o app para acceder a esos datos."
+                "Por razones de seguridad, no puedo proporcionar detalles como tu correo, contraseña o identificación. Te recomiendo acceder a tu cuenta personal a través de nuestra página web o aplicación para gestionar y visualizar de manera segura esta información.",
+                "Entiendo que necesites esa información, pero por seguridad no puedo divulgar datos personales como correos, contraseñas o números de identificación. Puedes revisar estos detalles iniciando sesión en tu cuenta en nuestra plataforma.",
+                "Para proteger tu privacidad y seguridad, no estoy autorizado a proporcionar o confirmar datos personales sensibles como correos electrónicos o números de identificación. Por favor, utiliza las herramientas seguras en nuestra app o sitio web para acceder a esos datos.",
+                "Lamento las molestias, pero por políticas de seguridad, no puedo compartir información confidencial como tu correo o contraseña. Por favor, accede a tu perfil en nuestra aplicación o sitio web para consultar o actualizar tus datos de manera segura."
             ]
         }
     ]

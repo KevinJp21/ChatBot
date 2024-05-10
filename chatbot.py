@@ -1,15 +1,19 @@
-from flask import Flask, request, jsonify
 import pickle
-import numpy as np
-from keras.models import load_model
-import nltk
-from nltk.stem import SnowballStemmer 
 import unicodedata
-from DBConnection.config import chatbot
+
+import nltk
+import numpy as np
+from flask import Flask, jsonify, request
+from keras.models import load_model
+from nltk.stem import SnowballStemmer
+from spellchecker import SpellChecker
+
 import Handlers.handlers as hl
+from DBConnection.config import chatbot
 
 stemmer = SnowballStemmer('spanish')
 model = load_model('DocMe.h5')
+spell = SpellChecker(language='es')
 
 # Cargar palabras y clases
 with open('words.pkl', 'rb') as file:
@@ -17,14 +21,17 @@ with open('words.pkl', 'rb') as file:
 with open('classes.pkl', 'rb') as file:
     classes = pickle.load(file)
 
+def correct_spelling(sentence_words):
+    corrected_words = [spell.correction(word) if spell.unknown([word]) else word for word in sentence_words]
+    return corrected_words
+
 def clean_up_sentence(sentence):
-    # Normalización y tokenización
     sentence = unicodedata.normalize('NFC', sentence.lower())
     sentence_words = nltk.word_tokenize(sentence)
-    # Cambio a stemmer
+    # Corrige la ortografía antes de aplicar el stemming
+    sentence_words = correct_spelling(sentence_words)
     sentence_words = [stemmer.stem(word) for word in sentence_words]
     return sentence_words
-
 def bag_of_words(sentence):
     sentence_words = clean_up_sentence(sentence)
     bag = [0] * len(words)
