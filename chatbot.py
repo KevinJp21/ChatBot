@@ -17,8 +17,6 @@ with open('words.pkl', 'rb') as file:
 with open('classes.pkl', 'rb') as file:
     classes = pickle.load(file)
 
-print('ñ' in words)
-
 def clean_up_sentence(sentence):
     # Normalización y tokenización
     sentence = unicodedata.normalize('NFC', sentence.lower())
@@ -35,13 +33,18 @@ def bag_of_words(sentence):
             bag[words.index(w)] = 1
     return np.array(bag)
 
-def predict_class(sentence, threshold=0.2):
+def predict_class(sentence, threshold=0.25):
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
+    print(f"DEBUG: Sentence: {sentence}")
+    print(f"DEBUG: Bag of Words: {bow}")
+    print(f"DEBUG: Prediction: {res}")
     if np.max(res) < threshold:
+        print("DEBUG: No prediction exceeded the threshold.")
         return None
     max_index = np.where(res == np.max(res))[0][0]
     category = classes[max_index]
+    print(f"DEBUG: Predicted category: {category}")
     return category
 
 def get_response(tag, user_id):
@@ -51,7 +54,8 @@ def get_response(tag, user_id):
         'informacion_asistente': hl.handle_infoAssist,
         'proxima_cita': hl.handle_next_appointment,
         'agradecimiento': hl.handle_thankfull,
-        'datos_privados': hl.handle_privateDatas
+        'datos_privados': hl.handle_privateDatas,
+        'estado_animo_mal': hl.handle_moodState
     }
     if tag in handlers:
         handler = handlers[tag]

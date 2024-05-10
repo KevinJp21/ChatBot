@@ -71,7 +71,12 @@ def handle_thankfull():
         if intent['tag'] == 'agradecimiento':
             response = random.choice(intent['responses'])
             return response
-
+        
+def handle_moodState():
+    for intent in intents['intents']:
+        if intent['tag'] == 'estado_animo_mal':
+            response = random.choice(intent['responses'])
+            return response
 def handle_privateDatas():
     for intent in intents['intents']:
         if intent['tag'] == 'datos_privados':
