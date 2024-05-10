@@ -20,18 +20,34 @@ with open('words.pkl', 'rb') as file:
     words = pickle.load(file)
 with open('classes.pkl', 'rb') as file:
     classes = pickle.load(file)
+    
 
 def correct_spelling(sentence_words):
-    corrected_words = [spell.correction(word) if spell.unknown([word]) else word for word in sentence_words]
+    # Asegura que la función siempre retorne una lista, incluso si está vacía
+    corrected_words = [spell.correction(word) if spell.unknown([word]) else word for word in sentence_words if word is not None]
     return corrected_words
 
 def clean_up_sentence(sentence):
+    if not sentence:
+        return []  # Retorna una lista vacía si la entrada es None o vacía
     sentence = unicodedata.normalize('NFC', sentence.lower())
     sentence_words = nltk.word_tokenize(sentence)
     # Corrige la ortografía antes de aplicar el stemming
     sentence_words = correct_spelling(sentence_words)
-    sentence_words = [stemmer.stem(word) for word in sentence_words]
+    # Asegúrate de que todas las palabras son válidas antes de aplicar el stemming
+    sentence_words = [stemmer.stem(word) for word in sentence_words if word]
     return sentence_words
+
+def analyze_input_quality(sentence_words):
+    unknown_words = [word for word in sentence_words if word not in words]
+    unknown_ratio = len(unknown_words) / len(sentence_words) if sentence_words else 0
+    return unknown_ratio
+
+def adjust_threshold(base_threshold, unknown_ratio, increase_factor=0.1):
+    if unknown_ratio > 0.5:
+        return base_threshold + increase_factor
+    return base_threshold
+
 def bag_of_words(sentence):
     sentence_words = clean_up_sentence(sentence)
     bag = [0] * len(words)
@@ -40,13 +56,19 @@ def bag_of_words(sentence):
             bag[words.index(w)] = 1
     return np.array(bag)
 
-def predict_class(sentence, threshold=0.25):
+def predict_class(sentence, base_threshold=0.18):
+    sentence_words = clean_up_sentence(sentence)
+    unknown_ratio = analyze_input_quality(sentence_words)
+    adjusted_threshold = adjust_threshold(base_threshold, unknown_ratio)
+
     bow = bag_of_words(sentence)
     res = model.predict(np.array([bow]))[0]
     print(f"DEBUG: Sentence: {sentence}")
+    print(f"DEBUG: Unknown Words Ratio: {unknown_ratio}")
     print(f"DEBUG: Bag of Words: {bow}")
     print(f"DEBUG: Prediction: {res}")
-    if np.max(res) < threshold:
+    print(f"DEBUG: Adjusted Threshold: {adjusted_threshold}")
+    if np.max(res) < adjusted_threshold:
         print("DEBUG: No prediction exceeded the threshold.")
         return None
     max_index = np.where(res == np.max(res))[0][0]
@@ -57,12 +79,14 @@ def predict_class(sentence, threshold=0.25):
 def get_response(tag, user_id):
     handlers = {
         'saludo': hl.handle_greeting,
-        'ultima_cita': hl.handle_last_appointment,
         'informacion_asistente': hl.handle_infoAssist,
+        'estado_animo_mal': hl.handle_BadMoodState,
         'proxima_cita': hl.handle_next_appointment,
+        'ultima_cita': hl.handle_last_appointment,
         'agradecimiento': hl.handle_thankfull,
         'datos_privados': hl.handle_privateDatas,
-        'estado_animo_mal': hl.handle_moodState
+        'recomendacion_medicamento': hl.handle_MedicationRecommended
+        
     }
     if tag in handlers:
         handler = handlers[tag]

@@ -18,13 +18,13 @@
                 "buenos días, ¿cómo amaneciste?"
             ],
             "responses": [
-                "¡Hola {name}! ¿Cómo puedo ayudarte hoy?",
-                "¡Buenas {name}! ¿En qué te puedo ser útil?",
+                "¡Hola {name}!, ¿Cómo puedo ayudarte?",
+                "¡Buenas {name}!, ¿En qué te puedo ser útil?",
                 "¡Hola {name}! Espero que estés bien. ¿Cómo puedo asistirte?",
-                "¡Saludos {name}! ¿Hay algo en particular con lo que necesites ayuda?",
-                "¡Hola {name}! ¿Todo bien? ¿Te puedo ayudar en algo?",
-                "¡Qué tal {name}! ¿Cómo puedo ayudarte hoy?",
-                "¡Buen día {name}! ¿Hay algo con lo que necesites asistencia?"
+                "¡Saludos {name}!, ¿Hay algo en particular con lo que necesites ayuda?",
+                "¡Hola {name}!, ¿Te puedo ayudar en algo?",
+                "¡Qué tal {name}!, ¿Cómo puedo ayudarte hoy?",
+                "¡Buen día {name}!, ¿Hay algo con lo que necesites asistencia?"
             ]
         },
         {
@@ -40,7 +40,9 @@
                 "¿Cómo te identificas?",
                 "¿Cuál es tu identidad?",
                 "¿Cuál es tu función aquí como asistente virtual?",
-                "¿Qué haces?"
+                "¿Qué haces?",
+                "¿Qué funciones puedes realizar?",
+                "Me gustaría saber más acerca de ti"
             ],
             "responses": [
                 "Me llamo DocMe, soy tu asistente virtual aquí para ayudarte con cualquier duda que tengas, especialmente sobre tus citas médicas y más.",
@@ -75,6 +77,7 @@
             "tag": "proxima_cita",
             "patterns": [
                 "cuando es mi próxima cita",
+                "¿Mi cita cuando es?",
                 "quiero saber mi siguiente cita",
                 "qué día es mi próxima cita",
                 "necesito confirmar la fecha de mi próxima cita",
@@ -87,7 +90,12 @@
                 "necesitaría saber cuándo es mi próxima visita programada"
             ],
             "responses": [
-                "Tu próxima cita está programada para el {date} a las {time} con el médico {doctor}. El motivo de la cita es {reason}. ¿Te puedo ayudar en algo más?"
+                "Tu próxima cita es el {date} a las {time} con el médico {doctor} por el motivo de {reason}. ¿Hay algo más en que pueda asistirte?",
+                "Déjame verificar... tu siguiente cita es el {date} a las {time} con el médico {doctor}, debido a {reason}. ¿Necesitas algo más?",
+                "Has reservado tu siguiente cita para el {date} a las {time} con el médico {doctor} por motivo de {reason}. ¿Necesitas más información?",
+                "La fecha de tu próxima cita es el {date} a las {time} con el médico {doctor}, y el motivo es {reason}. ¿Hay algo más en que pueda asistirte?",
+                "Estoy viendo que tu siguiente cita es el {date} a las {time} con el médico {doctor}. El motivo de la cita es {reason}. ¿Puedo ayudarte con algo más?",
+                "Según lo que tengo registrado, tu próxima cita médica es el {date} a las {time} con {doctor} por {reason}. ¿Te gustaría saber algo más?"
             ]
         },
         {
@@ -105,7 +113,12 @@
                 "dame la fecha de mi cita pasada"
             ],
             "responses": [
-                "Tu última cita fue el {date} a las {time} con el médico {doctor}. El motivo fue {reason}. ¿Hay algo más en lo que pueda ayudarte?"
+                "Tu última cita fue el {date} a las {time} con el médico {doctor} por el motivo de {reason}. ¿Hay algo más en que pueda asistirte?",
+                "Déjame ver... tu última cita fue el {date} a las {time} con el médico {doctor}, debido a {reason}. ¿Necesitas algo más?",
+                "Tu última cita se realizó el {date} a las {time} con el médico {doctor}, el motivo fue {reason}. ¿Hay algo más con lo que necesites ayuda?",
+                "Revisando tus registros, tu última cita ocurrió el {date} a las {time} con el médico {doctor}, y el motivo fue {reason}. ¿Puedo ayudarte con algo más?",
+                "Acabo de comprobar que tu última cita tuvo lugar el {date} a las {time} con el médico {doctor}. El motivo de la cita fue {reason}. ¿Necesitas otro servicio o tienes alguna otra consulta?",
+                "Tu última cita se realizó el {date} a las {time} con el médico {doctor} sobre {reason}. ¿Hay algo más con lo que necesites ayuda?"
             ]
         },
         {
@@ -118,7 +131,8 @@
                 "eres muy amable",
                 "bueno, gracias",
                 "dale, gracias",
-                "vale, gracias"
+                "vale, gracias",
+                "aprecio la asistencia que me has proporcionado"
             ],
             "responses": [
                 "¡De nada! Estoy aquí para ayudarte con cualquier cosa que necesites.",
@@ -133,13 +147,31 @@
                 "Necesito mi contraseña",
                 "Dime mi identificación",
                 "¿Puedes darme mi número de identificación?",
-                "¿Cuál es mi número de identificación?"
+                "¿Cuál es mi número de identificación?",
+                "¿Puedes confirmarme mis datos personales?"
             ],
             "responses": [
                 "Por razones de seguridad, no puedo proporcionar detalles como tu correo, contraseña o identificación. Te recomiendo acceder a tu cuenta personal a través de nuestra página web o aplicación para gestionar y visualizar de manera segura esta información.",
                 "Entiendo que necesites esa información, pero por seguridad no puedo divulgar datos personales como correos, contraseñas o números de identificación. Puedes revisar estos detalles iniciando sesión en tu cuenta en nuestra plataforma.",
                 "Para proteger tu privacidad y seguridad, no estoy autorizado a proporcionar o confirmar datos personales sensibles como correos electrónicos o números de identificación. Por favor, utiliza las herramientas seguras en nuestra app o sitio web para acceder a esos datos.",
                 "Lamento las molestias, pero por políticas de seguridad, no puedo compartir información confidencial como tu correo o contraseña. Por favor, accede a tu perfil en nuestra aplicación o sitio web para consultar o actualizar tus datos de manera segura."
+            ]
+        },
+        {
+            "tag": "recomendacion_medicamento",
+            "patterns": [
+                "¿Qué medicina me recomiendas para el dolor de cabeza?",
+                "Necesito alguna pasta para la gripe, ¿qué me sugieres?",
+                "¿Hay algún remedio que pueda tomar para el insomnio?",
+                "¿Qué pastilla puedo tomar para aliviar los síntomas de la alergia?",
+                "Tengo tos constante, ¿qué droga debería comprar?",
+                "¿Cuál es el mejor tratamiento para la ansiedad, según tú?",
+                "Me siento mal, ¿me puedes recomendar alguna pastilla?"
+            ],
+            "responses": [
+                "Lo siento, pero no estoy capacitado para recomendar medicamentos. Te sugiero consultar a un profesional de la salud.",
+                "No puedo ayudarte con recomendaciones de medicamentos. Por favor, consulta a un médico para obtener el tratamiento adecuado.",
+                "Recomendar medicamentos está fuera de mis capacidades. Es importante que hables con un médico sobre tus síntomas."
             ]
         }
     ]

@@ -90,13 +90,13 @@ train_x, test_x, train_y, test_y = train_test_split(list(training[:,0]), list(tr
 
 model = Sequential()
 model.add(Dense(100, input_shape=(len(train_x[0]),), activation='relu'))
-model.add(Dropout(0.5))
+model.add(Dropout(0.6))
 model.add(Dense(50, activation='relu', kernel_regularizer=l2(0.01)))
-model.add(Dropout(0.5))
+model.add(Dropout(0.6))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
 model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=0.001), metrics=['accuracy'])
 
 early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-train_process = model.fit(np.array(train_x), np.array(train_y), epochs=30, batch_size=1, verbose=2, validation_data=(np.array(test_x), np.array(test_y)), callbacks=[early_stop])
+train_process = model.fit(np.array(train_x), np.array(train_y), epochs=60, batch_size=5, verbose=2, validation_data=(np.array(test_x), np.array(test_y)), callbacks=[early_stop])
 model.save("DocMe.h5")
