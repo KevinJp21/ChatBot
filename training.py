@@ -89,14 +89,16 @@ training = np.array(training, dtype=object)
 train_x, test_x, train_y, test_y = train_test_split(list(training[:,0]), list(training[:,1]), test_size=0.2)
 
 model = Sequential()
-model.add(Dense(100, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dense(128, input_shape=(len(train_x[0]),), activation='relu'))
 model.add(Dropout(0.6))
-model.add(Dense(50, activation='relu', kernel_regularizer=l2(0.01)))
+model.add(Dense(64, activation='relu', kernel_regularizer=l2(0.01)))
 model.add(Dropout(0.6))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
-model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=0.001), metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=0.03), metrics=['accuracy'])
 
-early_stop = EarlyStopping(monitor='val_loss', patience=10, restore_best_weights=True)
-train_process = model.fit(np.array(train_x), np.array(train_y), epochs=60, batch_size=5, verbose=2, validation_data=(np.array(test_x), np.array(test_y)), callbacks=[early_stop])
-model.save("DocMe.h5")
+train_process = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=10, verbose=2)
+model.save("DocMe.h5", train_process)
+print("|----------Modelo entrenado----------|")
+
+

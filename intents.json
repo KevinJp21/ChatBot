@@ -132,7 +132,8 @@
                 "bueno, gracias",
                 "dale, gracias",
                 "vale, gracias",
-                "aprecio la asistencia que me has proporcionado"
+                "aprecio la asistencia que me has proporcionado",
+                "fue de gran ayuda"
             ],
             "responses": [
                 "¡De nada! Estoy aquí para ayudarte con cualquier cosa que necesites.",
@@ -148,7 +149,8 @@
                 "Dime mi identificación",
                 "¿Puedes darme mi número de identificación?",
                 "¿Cuál es mi número de identificación?",
-                "¿Puedes confirmarme mis datos personales?"
+                "¿Puedes confirmarme mis datos personales?",
+                "¿Puedes verificar algunos de mis datos personales?"
             ],
             "responses": [
                 "Por razones de seguridad, no puedo proporcionar detalles como tu correo, contraseña o identificación. Te recomiendo acceder a tu cuenta personal a través de nuestra página web o aplicación para gestionar y visualizar de manera segura esta información.",

@@ -3,7 +3,7 @@ import unicodedata
 
 import nltk
 import numpy as np
-from flask import Flask, jsonify, request
+from flask import jsonify, request
 from keras.models import load_model
 from nltk.stem import SnowballStemmer
 from spellchecker import SpellChecker
@@ -20,7 +20,6 @@ with open('words.pkl', 'rb') as file:
     words = pickle.load(file)
 with open('classes.pkl', 'rb') as file:
     classes = pickle.load(file)
-    
 
 def correct_spelling(sentence_words):
     # Asegura que la función siempre retorne una lista, incluso si está vacía
@@ -56,7 +55,7 @@ def bag_of_words(sentence):
             bag[words.index(w)] = 1
     return np.array(bag)
 
-def predict_class(sentence, base_threshold=0.18):
+def predict_class(sentence, base_threshold=0.2):
     sentence_words = clean_up_sentence(sentence)
     unknown_ratio = analyze_input_quality(sentence_words)
     adjusted_threshold = adjust_threshold(base_threshold, unknown_ratio)
@@ -109,7 +108,9 @@ def get_bot_response():
 
     response = get_response(tag, user_id)
     return jsonify({"response": response})
-
+    
+print("|--------ChatBot Iniciado--------|")
 if __name__ == "__main__":
     from waitress import serve
     serve(chatbot, host="0.0.0.0", port=8080)
+
