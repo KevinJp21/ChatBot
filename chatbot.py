@@ -12,7 +12,7 @@ import Handlers.handlers as hl
 from DBConnection.config import chatbot
 
 stemmer = SnowballStemmer('spanish')
-model = load_model('DocMe.h5')
+model = load_model('DocMe.keras')
 spell = SpellChecker(language='es')
 
 # Cargar palabras y clases
@@ -55,7 +55,7 @@ def bag_of_words(sentence):
             bag[words.index(w)] = 1
     return np.array(bag)
 
-def predict_class(sentence, base_threshold=0.2):
+def predict_class(sentence, base_threshold=0.5):
     sentence_words = clean_up_sentence(sentence)
     unknown_ratio = analyze_input_quality(sentence_words)
     adjusted_threshold = adjust_threshold(base_threshold, unknown_ratio)
@@ -65,7 +65,7 @@ def predict_class(sentence, base_threshold=0.2):
     print(f"DEBUG: Sentence: {sentence}")
     print(f"DEBUG: Unknown Words Ratio: {unknown_ratio}")
     print(f"DEBUG: Bag of Words: {bow}")
-    print(f"DEBUG: Prediction: {res}")
+    print(f"DEBUG: Prediction: {[f'{x:.1f}' for x in res]}")
     print(f"DEBUG: Adjusted Threshold: {adjusted_threshold}")
     if np.max(res) < adjusted_threshold:
         print("DEBUG: No prediction exceeded the threshold.")

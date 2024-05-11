@@ -12,7 +12,6 @@ import unicodedata
 from nltk.corpus import wordnet
 from sklearn.model_selection import train_test_split
 from keras.regularizers import l2
-from keras.callbacks import EarlyStopping
 
 # Descarga de recursos necesarios de nltk
 nltk.download('punkt')
@@ -86,19 +85,19 @@ for document in documents:
 random.shuffle(training)
 training = np.array(training, dtype=object)
 
-train_x, test_x, train_y, test_y = train_test_split(list(training[:,0]), list(training[:,1]), test_size=0.2)
+train_x, test_x, train_y, test_y = train_test_split(list(training[:,0]), list(training[:,1]), test_size=0.3)
 
 model = Sequential()
-model.add(Dense(150, input_shape=(len(train_x[0]),), activation='relu'))
+model.add(Dense(100, input_shape=(len(train_x[0]),), activation='relu'))
 model.add(Dropout(0.5))
-model.add(Dense(120, activation='relu', kernel_regularizer=l2(0.01)))
+model.add(Dense(60, activation='relu', kernel_regularizer=l2(0.01)))
 model.add(Dropout(0.5))
 model.add(Dense(len(train_y[0]), activation='softmax'))
 
-model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=0.01), metrics=['accuracy'])
+model.compile(loss='categorical_crossentropy', optimizer=Adam(learning_rate=0.005), metrics=['accuracy'])
 
-train_process = model.fit(np.array(train_x), np.array(train_y), epochs=200, batch_size=10, verbose=2)
-model.save("DocMe.h5")
+train_process = model.fit(np.array(train_x), np.array(train_y), epochs=100, batch_size=10, verbose=2)
+model.save("DocMe.keras")
 print("|----------Modelo entrenado----------|")
 
 
