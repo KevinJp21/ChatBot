@@ -51,14 +51,11 @@
             ]
         },
         {
-            "tag": "estado_animo_mal",
+            "tag": "malestar_emocional",
             "patterns": [
                 "me siento mal",
                 "no muy bien",
                 "fatal",
-                "enfermo",
-                "grave",
-                "tengo una enfermedad",
                 "hoy no es mi mejor día",
                 "me siento un poco deprimido últimamente",
                 "últimamente me he sentido abajo",
@@ -69,8 +66,33 @@
                 "he estado sintiéndome muy deprimido"
             ],
             "responses": [
-                "Lo siento mucho. Puedo ayudarte a programar una cita con un médico. ¿Te gustaría hacerlo ahora?",
-                "Lamento que te sientas así. Si necesitas hablar con un especialista o agendar una cita, estoy aquí para ayudarte. ¿Cómo deseas proceder?"
+                "Lo siento mucho que te sientas así. ¿Hay algo específico que haya causado que te sientas mal últimamente? Estoy aquí para escucharte.",
+                "Parece que estás pasando por un momento difícil. A veces, hablar con alguien puede ayudar mucho. ¿Te gustaría que te ponga en contacto con un consejero o un terapeuta?",
+                "Lamento escuchar que te sientes de esta manera. Recuerda, no estás solo en esto y hay personas que pueden ayudarte. ¿Quieres que busque recursos de apoyo emocional para ti?",
+                "Entiendo que no te sientas bien, y es totalmente válido sentirse así. Si crees que sería útil, puedo ayudarte a encontrar un grupo de apoyo o un profesional de la salud mental.",
+                "Escuchar que te sientes así me preocupa. Si sientes que todo se está volviendo demasiado, es importante buscar ayuda profesional. ¿Te gustaría que te ayude a programar una cita?",
+                "Es completamente normal tener días malos, pero si estos sentimientos persisten, podría ser beneficioso hablar con alguien que pueda ofrecer soporte. ¿Puedo asistirte para encontrar ayuda profesional?",
+                "Lamento que te encuentres en esta situación. A veces, solo expresar lo que sientes puede ser un gran paso hacia sentirte mejor. Estoy aquí para escucharte, o si prefieres, puedo ayudarte a contactar a un profesional.",
+                "Todos tenemos momentos difíciles, y hablar sobre lo que sientes es un paso importante. ¿Te gustaría que te dé información sobre cómo contactar a un especialista en salud mental?"
+            ]
+        },
+        {
+            "tag": "malestar_fisico_general",
+            "patterns": [
+                "enfermo",
+                "grave",
+                "tengo una enfermedad",
+                "tengo fiebre"
+            ],
+            "responses": [
+                "Parece que podrías estar enfermo. Sería bueno que veas a un médico lo antes posible. ¿Quieres que te ayude a agendar una cita?",
+                "Lamento escuchar que te sientes mal. ¿Has tomado algún medicamento? Si los síntomas continúan, te recomendaría visitar a un médico.",
+                "Es importante cuidarte, especialmente si sientes que algo no va bien. ¿Te gustaría que busque un centro médico cercano para ti?",
+                "Me preocupa que te sientas así. Descansar y mantenerse hidratado es crucial. Si los síntomas empeoran, por favor considera visitar a un profesional de la salud.",
+                "Escuchar que no te sientes bien es preocupante. Asegúrate de descansar y beber suficiente agua. ¿Hay algo más que pueda hacer por ti, como encontrar una farmacia cercana?",
+                "Tu salud es lo más importante. Si tienes presentas sintomas que te preocupan, podría ser una buena idea hablar con un médico. ¿Puedo ayudarte a encontrar atención médica?",
+                "Parece que necesitas cuidarte un poco. Mantenerte en reposo y bien hidratado son pasos importantes. Si sientes que necesitas ver a un médico, estoy aquí para ayudarte a hacer una cita.",
+                "Lamento que no te encuentres bien. A veces, los síntomas pueden ser señal de algo que necesita atención médica. ¿Te gustaría que te busque un servicio de salud para evaluar tus síntomas?"
             ]
         },
         {
@@ -158,23 +180,7 @@
                 "Para proteger tu privacidad y seguridad, no estoy autorizado a proporcionar o confirmar datos personales sensibles como correos electrónicos o números de identificación. Por favor, utiliza las herramientas seguras en nuestra app o sitio web para acceder a esos datos.",
                 "Lamento las molestias, pero por políticas de seguridad, no puedo compartir información confidencial como tu correo o contraseña. Por favor, accede a tu perfil en nuestra aplicación o sitio web para consultar o actualizar tus datos de manera segura."
             ]
-        },
-        {
-            "tag": "recomendacion_medicamento",
-            "patterns": [
-                "¿Qué medicina me recomiendas para el dolor de cabeza?",
-                "Necesito alguna pasta para la gripe, ¿qué me sugieres?",
-                "¿Hay algún remedio que pueda tomar para el insomnio?",
-                "¿Qué pastilla puedo tomar para aliviar los síntomas de la alergia?",
-                "Tengo tos constante, ¿qué droga debería comprar?",
-                "¿Cuál es el mejor tratamiento para la ansiedad, según tú?",
-                "Me siento mal, ¿me puedes recomendar alguna pastilla?"
-            ],
-            "responses": [
-                "Lo siento, pero no estoy capacitado para recomendar medicamentos. Te sugiero consultar a un profesional de la salud.",
-                "No puedo ayudarte con recomendaciones de medicamentos. Por favor, consulta a un médico para obtener el tratamiento adecuado.",
-                "Recomendar medicamentos está fuera de mis capacidades. Es importante que hables con un médico sobre tus síntomas."
-            ]
         }
+      
     ]
 }

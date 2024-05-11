@@ -60,32 +60,23 @@ def handle_last_appointment(user_id):
     else:
         return "No tienes citas anteriores registradas."
 
-def handle_infoAssist():
+special_handlers = {
+    'saludo': handle_greeting,
+    'proxima_cita': handle_next_appointment,
+    'ultima_cita': handle_last_appointment
+}
+
+def handle_response(tag, user_id=None):
+    # Buscar el tag en el diccionario de manejadores especiales
+    if tag in special_handlers:
+        if user_id:
+            return special_handlers[tag](user_id)
+        return special_handlers[tag]()
+
+    # Para todos los otros tags, buscar en los intents y devolver una respuesta estándar
     for intent in intents['intents']:
-        if intent['tag'] == 'informacion_asistente':
+        if intent['tag'] == tag:
             response = random.choice(intent['responses'])
             return response
-        
-def handle_thankfull():
-    for intent in intents['intents']:
-        if intent['tag'] == 'agradecimiento':
-            response = random.choice(intent['responses'])
-            return response
-        
-def handle_BadMoodState():
-    for intent in intents['intents']:
-        if intent['tag'] == 'estado_animo_mal':
-            response = random.choice(intent['responses'])
-            return response
-        
-def handle_privateDatas():
-    for intent in intents['intents']:
-        if intent['tag'] == 'datos_privados':
-            response = random.choice(intent['responses'])
-            return response
-        
-def handle_MedicationRecommended():
-    for intent in intents['intents']:
-        if intent['tag'] == 'recomendacion_medicamento':
-            response = random.choice(intent['responses'])
-            return response
+
+    return "Lo siento, no entiendo lo que necesitas."

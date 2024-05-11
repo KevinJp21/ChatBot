@@ -76,25 +76,7 @@ def predict_class(sentence, base_threshold=0.2):
     return category
 
 def get_response(tag, user_id):
-    handlers = {
-        'saludo': hl.handle_greeting,
-        'informacion_asistente': hl.handle_infoAssist,
-        'estado_animo_mal': hl.handle_BadMoodState,
-        'proxima_cita': hl.handle_next_appointment,
-        'ultima_cita': hl.handle_last_appointment,
-        'agradecimiento': hl.handle_thankfull,
-        'datos_privados': hl.handle_privateDatas,
-        'recomendacion_medicamento': hl.handle_MedicationRecommended
-        
-    }
-    if tag in handlers:
-        handler = handlers[tag]
-        if handler.__code__.co_argcount == 0:
-            return handler()
-        elif handler.__code__.co_argcount == 1:
-            return handler(user_id)
-    else:
-        return "Lo siento, no puedo ayudarte con eso."
+    return hl.handle_response(tag, user_id)
 
 @chatbot.route('/message', methods=['POST'])
 def get_bot_response():
