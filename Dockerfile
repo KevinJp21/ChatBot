@@ -14,7 +14,7 @@ RUN pip install -r requirements.txt
 COPY . .
 
 # Expone el puerto 5000 (o el puerto en el que se ejecute tu aplicación Flask)
-EXPOSE 8080
+EXPOSE 5000
 
 # Comando para ejecutar tu aplicación Flask
 CMD ["python", "chatbot.py"]
