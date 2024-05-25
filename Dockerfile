@@ -1,8 +1,8 @@
 # Utiliza una imagen base de Python
-FROM python:3.8
+FROM python:3.10
 
 # Establece el directorio de trabajo en /app
-WORKDIR /app
+WORKDIR /chatbot
 
 # Copia el archivo requirements.txt al contenedor
 COPY requirements.txt .
