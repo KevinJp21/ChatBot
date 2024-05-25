@@ -82,7 +82,7 @@ def get_response(tag, user_id):
 def get_bot_response():
     user_data = request.json
     sentence = user_data.get('message').lower()
-    user_id = user_data.get('user_id', 26)
+    user_id = user_data.get('user_id')
 
     tag = predict_class(sentence)
     if tag is None:
