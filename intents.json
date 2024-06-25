@@ -10,7 +10,7 @@
                 "buenas",
                 "qué onda",
                 "qué pasa",
-                "buen día, cómo estás",
+                "ajouen día, cómo estás",
                 "hola, espero que estés bien",
                 "saludos, ¿cómo va todo?",
                 "hola, ¿todo bien?",
@@ -158,7 +158,7 @@
                 "fue de gran ayuda"
             ],
             "responses": [
-                "¡De nada! Estoy aquí para ayudarte con cualquier cosa que necesites.",
+                "¡De nada!, Estoy aquí para ayudarte con cualquier cosa que necesites.",
                 "No hay de qué. Siempre estoy disponible para asistirte.",
                 "Es un placer ayudarte. No dudes en contactarme si necesitas más ayuda."
             ]

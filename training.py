@@ -23,6 +23,7 @@ stemmer = SnowballStemmer('spanish')
 stop_words = stopwords.words('spanish')
 ignore_letters = ['?', '!', '¿', '.', ',']
 
+# Función de preprocesamiento de texto
 def preprocess_text(text):
     text = unicodedata.normalize('NFC', text.lower())
     words = nltk.word_tokenize(text)

@@ -1,13 +1,11 @@
 import pickle
 import unicodedata
-
 import nltk
 import numpy as np
 from flask import jsonify, request
 from keras.models import load_model
 from nltk.stem import SnowballStemmer
 from spellchecker import SpellChecker
-
 import Handlers.handlers as hl
 from DBConnection.config import chatbot
 
