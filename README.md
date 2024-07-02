@@ -14,10 +14,15 @@ Este proyecto es un chatbot inteligente construido utilizando Flask, una librer�
 
 - Python
 - Flask
-- SQLAlchemy para la gestión de bases de datos
-- Keras para el modelado de redes neuronales
-- NLTK para el procesamiento de lenguaje natural
-- MySQL para la base de datos (configurada en AlwaysData)
+- Flask-SQLAlchemy para la gestión de bases de datos
+- numpy para operaciones matemáticas
+- nltk para el procesamiento de lenguaje natural
+- keras para el modelado de redes neuronales
+- tensorflow como backend para keras
+- waitress como servidor WSGI
+- pymysql para la conexión con MySQL
+- scikit-learn para técnicas de machine learning
+- pyspellchecker para corrección ortográfica
 
 ## Cómo Iniciar
 
