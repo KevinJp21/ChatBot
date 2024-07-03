@@ -1,50 +1,50 @@
-# Chatbot con Flask y Procesamiento de Lenguaje Natural
+# Chatbot with Flask and Natural Language Processing
 
-Este proyecto es un chatbot inteligente construido utilizando Flask, una librería de aprendizaje profundo (Keras) y técnicas de Procesamiento de Lenguaje Natural (NLP) con la librería NLTK. El chatbot está diseñado para interactuar en español, proporcionando respuestas automáticas basadas en la intención detectada en las consultas del usuario.
+This project is an intelligent chatbot built using Flask, a deep learning library (Keras) and Natural Language Processing (NLP) techniques with the NLTK library. The chatbot is designed to interact in Spanish, providing automatic responses based on the intention detected in the user's queries.
 
-## Características Principales
+## Main Features
 
-- **Flask como Framework Backend**: Uso de Flask para crear un servidor web que maneje las solicitudes HTTP y proporcione una API para la interacción con el chatbot.
-- **Interacción basada en Intenciones**: El sistema clasifica las entradas de los usuarios según las intenciones predefinidas en un archivo JSON.
-- **Modelo de Red Neuronal**: Uso de una red neuronal creada con Keras para clasificar las intenciones a partir del texto de entrada.
-- **Procesamiento de Texto con NLTK**: Aplicación de tokenización y lematización para preparar los textos antes de alimentarlos al modelo de clasificación.
-- **Respuestas Dinámicas**: Generación de respuestas basadas en la intención detectada, personalizadas con el nombre del usuario.
+- **Flask as Backend Framework**: Using Flask to create a web server that handles HTTP requests and provides an API for interaction with the chatbot.
+- **Interaction based on Intents**: The system classifies user input according to predefined intents in a JSON file.
+- **Neural Network Model**: Use of a neural network created with Keras to classify intentions from the input text.
+- **Text Processing with NLTK**: Application of tokenization and lemmatization to prepare texts before feeding them to the classification model.
+- **Dynamic Responses**: Generation of responses based on the detected intention, personalized with the user's name.
 
-## Tecnologías Utilizadas
+## Used technology
 
 - Python
 - Flask
-- Flask-SQLAlchemy para la gestión de bases de datos
-- numpy para operaciones matemáticas
-- nltk para el procesamiento de lenguaje natural
-- keras para el modelado de redes neuronales
-- tensorflow como backend para keras
-- waitress como servidor WSGI
-- pymysql para la conexión con MySQL
-- scikit-learn para técnicas de machine learning
-- pyspellchecker para corrección ortográfica
+- Flask-SQLAlchemy for database management
+- numpy for math operations
+- nltk for natural language processing
+- keras for neural network modeling
+- tensorflow as backend for keras
+- waitress as WSGI server
+- pymysql for connection with MySQL
+- scikit-learn for machine learning techniques
+- pyspellchecker for spell checking
 
-## Cómo Iniciar
+## How to Start
 
-Para ejecutar este proyecto localmente, sigue estos pasos:
+To run this project locally, follow these steps:
 
-1. **Clona el Repositorio:**
+1. **Clone the Repository:**
 ```bash
 git clone https://github.com/KevinJp21/ChatBot.git
 ```
-2. **Instala las Dependencias:**
+2. **Install the Dependencies:**
 ```bash
 pip install -r requirements.txt
 ```
-3. **Configura la Base de Datos:**
-Asegúrate de configurar correctamente tus credenciales de MySQL en el archivo de configuración de Flask.
+3. **Configure the Database:**
+Make sure you correctly configure your MySQL credentials in the Flask configuration file.
 
-4. **Entrena el Modelo:**
-Si es necesario, reentrena el modelo de red neuronal utilizando el script proporcionado
+4. **Train the Model:**
+If necessary, retrain the neural network model using the provided script
  ```bash
 py training.py.
  ```
-5. **Inicia el Servidor:**
+5. **Start the Server:**
 ```bash
 py chatbot.py
 
