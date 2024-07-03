@@ -51,4 +51,6 @@ py training.py.
 5. **Start the Server:**
 ```bash
 py chatbot.py
-
+```
+## Author
+- [@KevinJp21](https://github.com/KevinJp21)
