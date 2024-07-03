@@ -3,7 +3,7 @@
 This project is an intelligent chatbot built using Flask, a deep learning library (Keras) and Natural Language Processing (NLP) techniques with the NLTK library. The chatbot is designed to interact in Spanish, providing automatic responses based on the intention detected in the user's queries.
 
 <div style="text-align: center;">
-    <img src="https://portfolio-kj.vercel.app/assets/docme-chatbot-LzPG2RAO.webp" alt="DocMe Chatbot" width="400">
+    <img src="https://portfolio-kj.vercel.app/assets/docme-chatbot-LzPG2RAO.webp" alt="proyecto DocMe Chatbot" width="300">
 </div>
 
 ## Main Features
