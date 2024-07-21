@@ -1,3 +1,4 @@
+import tensorflow as tf
 import pickle
 import unicodedata
 import nltk
@@ -8,6 +9,7 @@ from nltk.stem import SnowballStemmer
 from spellchecker import SpellChecker
 import Handlers.handlers as hl
 from DBConnection.config import chatbot
+
 
 stemmer = SnowballStemmer('spanish')
 model = load_model('DocMe.keras')
