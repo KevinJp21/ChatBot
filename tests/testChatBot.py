@@ -1,2 +1,0 @@
-def testChatBot():
-    assert True
