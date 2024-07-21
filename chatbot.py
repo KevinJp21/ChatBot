@@ -10,7 +10,7 @@ from spellchecker import SpellChecker
 import Handlers.handlers as hl
 from DBConnection.config import chatbot
 
-
+nltk.download('punkt')
 stemmer = SnowballStemmer('spanish')
 model = load_model('DocMe.keras')
 spell = SpellChecker(language='es')
