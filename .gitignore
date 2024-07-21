@@ -10,3 +10,4 @@
 *.sln
 *.sw?
 pass.txt
+.vercel
